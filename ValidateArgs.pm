@@ -19,10 +19,9 @@ sub validateArgs {
 	if (not defined $excludeFile) {
 		die "Please enter the file containing the words you DON'T want to index.","\n";
 	} elsif (not -f $excludeFile){
-			die "This is not a valid file!", "\n";
+		die "This is not a valid file!", "\n";
 	}
 	
-
 	if (not defined $depth) {
 		# set depth to 3 if user doesnt input any
 		$depth = 3;
@@ -45,7 +44,7 @@ sub validateArgs {
 sub isInt {
 	my $var = shift;
 	if ($var !~ /^\d+?$/) {
-		die "depth has to be an integer between 0 and 5","\n";
+		die "depth has to be an integer between 0 and 5!","\n";
 	}
 }
 
