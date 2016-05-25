@@ -1,7 +1,12 @@
 #!/usr/bin/perl -w
 use strict;
-require "validateArgs.pl";
+use warnings;
 
-validateArgs($ARGV);
+use ValidateArgs;
+
+
+my ($name, $starturl, $excludeFile, $depth , $dir) = validateArgs(@ARGV);
+
+print "name: '$name' ", "\n", "starturl: '$starturl' ", "\n", "excludeFile: '$excludeFile' ", "\n", "depth : '$depth' ", "\n", "dir: '$dir'" , "\n" ;
 
 

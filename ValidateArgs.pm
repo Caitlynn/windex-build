@@ -1,0 +1,47 @@
+use strict;
+use Exporter;
+
+sub validateArgs {
+	my ($name, $starturl, $excludeFile, $depth , $dir) = @_;
+	if (@_ < 3 || @_ > 5){
+		die "Please enter enough number of arguments.!", "\n"
+	}
+
+	if (not defined $name) {
+		die "Please enter the name of the index!","\n";
+	}
+
+	if (not defined $starturl) {
+		die "Please enter the Wikipedia URL where you would like to begin your index. For example,
+			you might want to start at https://en.wikipedia.org/wiki/Perl. ","\n";
+	}
+
+	if (not defined $excludeFile) {
+		die "Please enter the file containing the words you DON'T want to index.","\n";
+	}
+
+	if (defined $depth) {
+		isInt($depth);
+		if($depth < 0 || $depth > 5){
+			die "The depth should be between 0 and 5 (include 0 and 5))!","\n";
+		}
+	} else {
+		# set depth to 3 if user doesnt input any
+		$depth = 3;
+	}
+
+	if (not defined $dir) {
+		$dir = "./";
+	}
+	return(@_);
+}
+
+# check if the input argument is a integer
+sub isInt {
+	my $var = shift;
+	if ($var !~ /^\d+?$/) {
+		die "depth has to be an integer between 0 and 5","\n";
+	}
+}
+
+1;
