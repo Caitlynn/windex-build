@@ -18,7 +18,10 @@ sub validateArgs {
 
 	if (not defined $excludeFile) {
 		die "Please enter the file containing the words you DON'T want to index.","\n";
+	} elsif (not -f $excludeFile){
+			die "This is not a valid file!", "\n";
 	}
+	
 
 	if (not defined $depth) {
 		# set depth to 3 if user doesnt input any
@@ -32,6 +35,8 @@ sub validateArgs {
 
 	if (not defined $dir) {
 		$dir = "./";
+	} elsif (not -d $dir) {
+		die "This is not a valid directory!","\n";
 	}
 	return($name, $starturl, $excludeFile, $depth , $dir);
 }
