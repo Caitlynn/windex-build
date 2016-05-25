@@ -20,20 +20,20 @@ sub validateArgs {
 		die "Please enter the file containing the words you DON'T want to index.","\n";
 	}
 
-	if (defined $depth) {
+	if (not defined $depth) {
+		# set depth to 3 if user doesnt input any
+		$depth = 3;
+	} else {
 		isInt($depth);
 		if($depth < 0 || $depth > 5){
 			die "The depth should be between 0 and 5 (include 0 and 5))!","\n";
 		}
-	} else {
-		# set depth to 3 if user doesnt input any
-		$depth = 3;
 	}
 
 	if (not defined $dir) {
 		$dir = "./";
 	}
-	return(@_);
+	return($name, $starturl, $excludeFile, $depth , $dir);
 }
 
 # check if the input argument is a integer
